@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group mb-0">
                                 <div class="checkbox p-0">
-                                    <input id="checkbox1" type="checkbox">
+                                    <input id="checkbox1" type="checkbox" name="remember_me">
                                     <label class="text-muted" for="checkbox1">Ingat Saya</label>
                                     <button class="btn btn-primary btn-block" type="submit">Sign in</button>
                                 </div>

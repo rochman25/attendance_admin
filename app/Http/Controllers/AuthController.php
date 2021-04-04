@@ -19,9 +19,14 @@ class AuthController extends Controller
             "password" => "required"
         ]);
         try {
-            //code...
             $credentials = $request->only('username','password');
-            if(Auth::attempt($credentials)){
+            $remember = false;
+            
+            if($request->remember_me == "on"){
+                $remember = true;
+            }
+
+            if(Auth::attempt($credentials,$remember)){
                 $request->session()->regenerate();
                 return redirect()->route('home.view')->with('success','Selamat Datang!.');
             }
@@ -33,6 +38,12 @@ class AuthController extends Controller
             //throw $th;
             return redirect()->back()->withErrors(['error' => $th->getMessage()]);
         }
+    }
+
+
+    public function logout(){
+        Auth::logout();
+        return redirect()->route('auth.login.view');
     }
 
 }
