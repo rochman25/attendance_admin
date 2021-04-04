@@ -18,31 +18,27 @@
                             aria-hidden="true"></i></div>
                 </li>
                 <li class="sidebar-list">
-                    <label class="badge badge-success">2</label><a class="sidebar-link sidebar-title" href="#"><i
-                            data-feather="home"></i><span class="lan-3">Dashboard </span></a>
+                    <a class="sidebar-link" href="{{ route('home.view') }}"><i
+                            data-feather="home"></i>Dashboard</a>
+                </li>
+                {{-- <li class="sidebar-list"><a class="sidebar-link sidebar-title link-nav"
+                        href="{{ route('home.view') }}"><i data-feather="calendar"> </i><span>Calendar</span></a></li> --}}
+                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
+                            data-feather="folder"></i><span class="lan-12">Master Data</span></a>
                     <ul class="sidebar-submenu">
-                        <li><a class="lan-4" href="{{ route('home.view') }}">Default</a></li>
-                        <li><a class="lan-5" href="dashboard-02.html">Ecommerce</a></li>
+                        <li><a href="#">Guru</a></li>
+                        <li><a href="#">Siswa</a></li>
                     </ul>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
-                            data-feather="airplay"></i><span class="lan-6">Widgets</span></a>
+                            data-feather="check-square"></i><span class="lan-13">Presensi</span></a>
                     <ul class="sidebar-submenu">
-                        <li><a href="general-widget.html">General</a></li>
-                        <li><a href="chart-widget.html">Chart</a></li>
+                        <li><a href="#">Presensi</a></li>
+                        <li><a href="#">Presensi Siswa</a></li>
                     </ul>
                 </li>
-                <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
-                            data-feather="layout"></i><span class="lan-7">Page layout</span></a>
-                    <ul class="sidebar-submenu">
-                        <li><a href="box-layout.html">Boxed</a></li>
-                        <li><a href="layout-rtl.html">RTL</a></li>
-                        <li><a href="layout-dark.html">Dark Layout</a></li>
-                        <li><a href="hide-on-scroll.html">Hide Nav Scroll</a></li>
-                        <li><a href="footer-light.html">Footer Light</a></li>
-                        <li><a href="footer-dark.html">Footer Dark</a></li>
-                        <li><a href="footer-fixed.html">Footer Fixed</a></li>
-                    </ul>
+                <li><a class="sidebar-link" href="#"><i data-feather="printer"></i><span
+                            class="lan-14">Laporan</span></a>
                 </li>
                 <li class="sidebar-main-title">
                     <div>
@@ -51,7 +47,8 @@
                 </li>
                 <li><a class="sidebar-link" href="#"><i data-feather="share-2"></i><span class="lan-10">Role</span></a>
                 </li>
-                <li><a class="sidebar-link" href="#"><i data-feather="users"></i><span class="lan-11">Pengguna</span></a>
+                <li class="sidebar-list"><a class="sidebar-link" href="{{ route('users.index') }}"><i data-feather="users"></i><span
+                            class="lan-11">Pengguna</span></a>
                 </li>
             </ul>
         </div>

@@ -74,7 +74,9 @@
     <script src="{{ asset('assets/js/config.js') }}"></script>
     <!-- Plugins JS start-->
     <script src="{{ asset('assets/js/sidebar-menu.js') }}"></script>
-    <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
+    <script src="{{ asset('assets/js/height-equal.js') }}"></script>
+    <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/chart/chartist/chartist.js') }}"></script>
     <script src="{{ asset('assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
     <script src="{{ asset('assets/js/chart/knob/knob.min.js') }}"></script>
     <script src="{{ asset('assets/js/chart/knob/knob-chart.js') }}"></script>
@@ -90,11 +92,11 @@
     <script src="{{ asset('assets/js/typeahead/typeahead.bundle.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead/typeahead.custom.js') }}"></script>
     <script src="{{ asset('assets/js/typeahead-search/handlebars.js') }}"></script>
-    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script>
-    <script src="{{ asset('assets/js/tooltip-init.js') }}"></script>
+    <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script> --}}
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    {{-- <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script> --}}
     <!-- login js-->
     <!-- Plugin used-->
 </body>

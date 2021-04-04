@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', function () {
         return view('pages.dashboard');
     })->name('home.view');
+
+    //route resource
+    //users
+    Route::resource('users', UserController::class);
+    //roles
+    Route::resource('roles', RoleController::class);
 });
