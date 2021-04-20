@@ -45,7 +45,7 @@
                         <h6>Settings</h6>
                     </div>
                 </li>
-                <li><a class="sidebar-link" href="#"><i data-feather="share-2"></i><span class="lan-10">Role</span></a>
+                <li><a class="sidebar-link" href="{{ route('roles.index') }}"><i data-feather="share-2"></i><span class="lan-10">Role</span></a>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link" href="{{ route('users.index') }}"><i data-feather="users"></i><span
                             class="lan-11">Pengguna</span></a>
