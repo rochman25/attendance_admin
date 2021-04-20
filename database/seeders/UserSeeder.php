@@ -2,9 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UserSeeder extends Seeder
 {
@@ -15,11 +18,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('users')->insert([
-            'name' => "Administrator",
-            "username" => "admin",
-            'email' => "admin@mail.com",
-            'password' => Hash::make('superadmin'),
+        $user = User::create([
+            'username' => 'admin',
+            'name' => 'Administrator', 
+            'email' => 'admin@gmail.com',
+            'password' => bcrypt('admin')
         ]);
+    
+        $role = Role::create(['name' => 'Admin']);
+     
+        $permissions = Permission::pluck('id','id')->all();
+   
+        $role->syncPermissions($permissions);
+     
+        $user->assignRole([$role->id]);
     }
 }

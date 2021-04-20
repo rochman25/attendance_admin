@@ -4,13 +4,13 @@
     <div class="page-title">
         <div class="row">
             <div class="col-6">
-                <h3>Pengguna</h3>
+                <h3>Role</h3>
             </div>
             <div class="col-6">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home.view') }}"> <i data-feather="home"></i></a>
                     </li>
-                    <li class="breadcrumb-item active">Pengguna</li>
+                    <li class="breadcrumb-item active">Role</li>
                 </ol>
             </div>
         </div>
@@ -21,8 +21,8 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Data Pengguna </h5>
-                    <span>Berikut <code>list data akun / pengguna</code> yang dapat mengakses aplikasi ini.
+                    <h5>Data Role </h5>
+                    <span>Berikut <code>list data role pengguna</code> aplikasi ini.
                         <code></code></span>
                 </div>
                 <div class="card-block row">
@@ -41,9 +41,8 @@
                                         <tr>
                                             <th scope="row">{{ ++$index }}</th>
                                             <td>{{ $item->name }}</td>
-                                            <td>@mdo</td>
                                             <td>
-                                                <a href="{{ route('users.edit',$item->id) }}" class="btn btn-success btn-xs"><i data-feather="edit"></i></a>
+                                                <a href="{{ route('roles.edit',$item->id) }}" class="btn btn-success btn-xs"><i data-feather="edit"></i></a>
                                                 <button type="button" class="btn btn-danger btn-xs"><i data-feather="trash-2"></i></a>
                                             </td>
                                         </tr>
