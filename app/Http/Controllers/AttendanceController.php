@@ -14,7 +14,7 @@ class AttendanceController extends Controller
      */
     public function index()
     {
-        return view('pages.teachers.index');
+        return view('pages.attendances.index');
     }
 
     /**
@@ -24,7 +24,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.attendances.create');
     }
 
     /**
@@ -57,7 +57,7 @@ class AttendanceController extends Controller
      */
     public function edit(Attendance $attendance)
     {
-        //
+        return view('pages.attendances.edit');
     }
 
     /**

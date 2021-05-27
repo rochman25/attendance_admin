@@ -24,7 +24,7 @@ class TeacherController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.attendances.index');
     }
 
     /**
@@ -57,7 +57,7 @@ class TeacherController extends Controller
      */
     public function edit(Teacher $teacher)
     {
-        //
+        return view('pages.teachers.edit');
     }
 
     /**
