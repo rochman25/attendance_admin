@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\AttendanceController;
+use App\Http\Controllers\AttendanceStudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -36,4 +40,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('users', UserController::class);
     //roles
     Route::resource('roles', RoleController::class);
+    //students
+    Route::resource('students', StudentController::class);
+    //teachers
+    Route::resource('teachers', TeacherController::class);
+    //attendances
+    Route::resource('attendances', AttendanceController::class);
+    //attendance students
+    Route::get('attendance_students',[AttendanceStudentController::class,'index'])->name('attendance_students.index');
 });

@@ -26,15 +26,15 @@
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                             data-feather="folder"></i><span class="lan-12">Master Data</span></a>
                     <ul class="sidebar-submenu">
-                        <li><a href="#">Guru</a></li>
-                        <li><a href="#">Siswa</a></li>
+                        <li><a href="{{ route('teachers.index') }}">Guru</a></li>
+                        <li><a href="{{ route('students.index') }}">Siswa</a></li>
                     </ul>
                 </li>
                 <li class="sidebar-list"><a class="sidebar-link sidebar-title" href="#"><i
                             data-feather="check-square"></i><span class="lan-13">Presensi</span></a>
                     <ul class="sidebar-submenu">
-                        <li><a href="#">Presensi</a></li>
-                        <li><a href="#">Presensi Siswa</a></li>
+                        <li><a href="{{ route('attendances.index') }}">Presensi</a></li>
+                        <li><a href="{{ route('attendance_students.index') }}">Presensi Siswa</a></li>
                     </ul>
                 </li>
                 <li><a class="sidebar-link" href="#"><i data-feather="printer"></i><span
