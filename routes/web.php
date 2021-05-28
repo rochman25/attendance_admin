@@ -41,10 +41,13 @@ Route::middleware(['auth'])->group(function () {
     //roles
     Route::resource('roles', RoleController::class);
     //students
+    Route::get('students/list', [StudentController::class, 'getStudents'])->name('students.list');
     Route::resource('students', StudentController::class);
     //teachers
+    Route::get('teachers/list', [TeacherController::class, 'getTeachers'])->name('teachers.list');
     Route::resource('teachers', TeacherController::class);
     //attendances
+    Route::get('attendances/list', [AttendanceController::class, 'getAttendances'])->name('attendances.list');
     Route::resource('attendances', AttendanceController::class);
     //attendance students
     Route::get('attendance_students',[AttendanceStudentController::class,'index'])->name('attendance_students.index');
