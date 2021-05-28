@@ -41,4 +41,8 @@ class TeacherRepository {
         ]);
     }
 
+    public function delete($id){
+        return $this->getById($id)->delete();
+    }
+
 }
