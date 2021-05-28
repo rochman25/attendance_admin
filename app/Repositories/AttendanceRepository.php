@@ -45,4 +45,14 @@ class AttendanceRepository {
         return $this->getById($id)->delete();
     }
 
+    public function getReportAttendanceById($id){
+        return $this->attendance->with(['attendance_student'])->where('id',$id)->get();
+    }
+
+    public function getReportAttendanceWithStudentById($id_attendance, $id_student){
+        return $this->attendance->with(['attendance_student' => function($query)use($id_student){
+            return $query->where('id',$id_student);
+        }])->where('id',$id_attendance)->get();
+    }
+
 }
