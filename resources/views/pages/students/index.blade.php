@@ -30,6 +30,9 @@
                     </div>
                     <div class="card-body">
                         <div class="card-block row">
+                            <div class="col-12" style="margin-bottom: 10px">
+                                <a href="{{ route('students.create') }}" class="btn btn-info"><i class="fa fa-plus"></i> Tambah</a>
+                            </div>
                             <div class="col-sm-12 col-lg-12 col-xl-12">
                                 <div class="table-responsive">
                                     <table class="display datatables" id="data-table-buttons">
