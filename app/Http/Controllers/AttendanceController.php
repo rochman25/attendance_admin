@@ -109,7 +109,8 @@ class AttendanceController extends Controller
     public function edit($id)
     {
         $attendance = $this->attendanceRepository->getById($id);
-        return view('pages.attendances.edit', compact('attendance'));
+        $days = ["senin","selasa","rabu","kamis","jum'at","sabtu"];
+        return view('pages.attendances.edit', compact('attendance','days'));
     }
 
     /**
@@ -133,7 +134,7 @@ class AttendanceController extends Controller
             DB::beginTransaction();
             $this->attendanceRepository->updateAttendance($request->all(), $id);
             DB::commit();
-            return redirect()->route('teachers.index')->with('success','Absensi berhasil disimpan');
+            return redirect()->route('attendances.index')->with('success','Absensi berhasil disimpan');
         } catch (\Throwable $th) {
             DB::rollBack();
             return redirect()->back()->withInput()->with('error','Absensi gagal disimpan');
