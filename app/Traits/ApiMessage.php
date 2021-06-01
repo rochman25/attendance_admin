@@ -19,6 +19,9 @@ trait ApiMessage
     public $attendanceSignIn = "Selamat anda sudah presensi masuk hari ini.";
     public $attendanceSignOut = "Selamat anda sudah presensi keluar hari ini.";
 
+    public $attendanceSignInLimit = "Anda sudah presensi masuk hari ini";
+    public $attendanceSignOutLimit = "Anda sudah presensi keluar hari ini";
+
     public $attendanceDone = "Anda sudah presensi hari ini";
     public $tokenRefreshed = "Token berhasil di refresh";
 }

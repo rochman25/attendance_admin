@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AttendanceStudentController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +33,7 @@ Route::middleware(['jwt.verify'])->group(function () {
     
     //attendance student
     Route::post('/attendances', [AttendanceStudentController::class, 'store'])->name('api.attendance.student');
+    Route::post('/attendances/multiple_student/save', [AttendanceStudentController::class, 'storeBulk'])->name('api.attendance.student.bulk');
     Route::get('/attendances/{id}',[AttendanceStudentController::class,'getDetailAttendance'])->name('api.attendance.student.detail');
     Route::get('/attendances/report/{id}',[AttendanceStudentController::class,'getStudentReportAttendance'])->name('api.attendance_history.student');
 });
