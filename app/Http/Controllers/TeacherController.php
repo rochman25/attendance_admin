@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Teacher;
 use App\Repositories\TeacherRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\UserTeacherRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -66,21 +68,37 @@ class TeacherController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, UserRepository $userRepository, UserTeacherRepository $userTeacherRepository)
     {
         $request->validate([
             "nip" => "required|unique:teachers,nip",
             "name" => "required",
-            "gender" => "required"
+            "gender" => "required",
+            "username" => "required|unique:users,username",
+            "password" => "required|min:4|confirmed",
+            "email" => "required|email|unique:users,email"
         ]);
 
         try {
             DB::beginTransaction();
-            $this->teacherRepository->createNewTeacher($request->all());
+            $teacher = $this->teacherRepository->createNewTeacher($request->all());
+            $userData = [
+                "username" => $request->input('username'),
+                "email" => $request->input('email'),
+                "name" => $request->input('name'),
+                "password" => $request->input('password')
+            ];
+            $user = $userRepository->createNewUser($userData);
+            $dataUserTeacher = [
+                "user_id" => $user->id,
+                "teacher_id" => $teacher->id
+            ];
+            $userTeacherRepository->create($dataUserTeacher);
             DB::commit();
             return redirect()->route('teachers.index')->with('success','Guru berhasil disimpan');
         } catch (\Throwable $th) {
             DB::rollBack();
+            dd($th->getMessage());
             return redirect()->back()->withInput()->with('error','Guru gagal disimpan');
         }
     }
@@ -117,10 +135,14 @@ class TeacherController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $id_user = $request->input('id_user');
         $request->validate([
             "nip" => "required|unique:teachers,nip,".$id,
             "name" => "required",
-            "gender" => "required"
+            "gender" => "required",
+            "username" => "required|unique:users,username,".$id_user,
+            "password" => "required|min:4|confirmed",
+            "email" => "required|email|unique:users,email,".$id_user
         ]);
 
         try {

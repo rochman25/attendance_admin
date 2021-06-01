@@ -74,7 +74,7 @@ class AttendanceController extends Controller
             "check_in" => "required",
             "check_out" => "required",
             "days" => "required",
-            "status" => "required"
+            "status" => "required",
         ]);
 
         try {
