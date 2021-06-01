@@ -9,6 +9,7 @@ use App\Repositories\UserTeacherRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Yajra\DataTables\DataTables;
 
 class TeacherController extends Controller
@@ -133,7 +134,7 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,UserRepository $userRepository,UserTeacherRepository $userTeacherRepository, $id)
     {
         $id_user = $request->input('id_user');
         $request->validate([
@@ -141,13 +142,30 @@ class TeacherController extends Controller
             "name" => "required",
             "gender" => "required",
             "username" => "required|unique:users,username,".$id_user,
-            "password" => "required|min:4|confirmed",
-            "email" => "required|email|unique:users,email,".$id_user
+            "password" => "nullable|min:4|confirmed",
+            "email" => "nullable|email|unique:users,email,".$id_user
         ]);
 
         try {
             DB::beginTransaction();
+            $user = $userRepository->getUserById($id_user);
+            $userData = [
+                "username" => $request->input('username'),
+                "email" => $request->input('email'),
+                "name" => $request->input('name'),
+                "password" => (!empty($request->input('password'))) ? Hash::make($request->input('password')) : $user->password
+            ];
             $this->teacherRepository->updateTeacher($request->all(), $id);
+            if($user){
+                $userRepository->updateUser($userData, $id_user);
+            }else{
+                $user = $userRepository->createNewUser($userData);
+                $userTeacher = [
+                    "user_id" => $user->id,
+                    "teacher_id" => $id,
+                ];
+                $userTeacherRepository->create($userTeacher);
+            }
             DB::commit();
             return redirect()->route('teachers.index')->with('success','Guru berhasil disimpan');
         } catch (\Throwable $th) {
@@ -162,10 +180,13 @@ class TeacherController extends Controller
      * @param  \App\Models\Teacher  $teacher
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(UserRepository $userRepository, UserTeacherRepository $userTeacherRepository, $id)
     {
         try{
             DB::beginTransaction();
+            $id_user = $userTeacherRepository->getByTeacherId($id)->user_id;
+            $userRepository->deleteUser($id_user);
+            $userTeacherRepository->removeByTeacherId($id);
             $this->teacherRepository->delete($id);
             DB::commit();
             return response()->json(['status' => 'success','message' => "Data berhasil dihapus"]);

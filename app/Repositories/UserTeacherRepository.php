@@ -25,5 +25,9 @@ class UserTeacherRepository {
     }
 
 
+    public function getByTeacherId($id){
+        return $this->userTeacher->where('teacher_id',$id)->first();
+    }
+
 
 }
