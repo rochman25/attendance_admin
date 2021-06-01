@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @push('styles')
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/vendors/datatables.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vendors/sweetalert2.css')}}">
 @endpush
 @section('content')
     <div class="container-fluid">
@@ -59,6 +60,7 @@
 @endsection
 @push('scripts')
     <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{asset('assets/js/sweet-alert/sweetalert.min.js')}}"></script>
     <script type="text/javascript">
         $(document).ready(function() {
             var table = $('#data-table-buttons').DataTable({
