@@ -31,7 +31,9 @@
                     <div class="card-body">
                         <div class="card-block row">
                             <div class="col-12" style="margin-bottom: 10px">
-                                <a href="{{ route('teachers.create') }}" class="btn btn-info"><i class="fa fa-plus"></i> Tambah</a>
+                                <a href="{{ route('teachers.create') }}" class="btn btn-info mb-3"><i class="fa fa-plus"></i> Tambah</a>
+                                @component('components.alert-success')
+                                @endcomponent
                             </div>
                             <div class="col-sm-12 col-lg-12 col-xl-12">
                                 <div class="table-responsive">
