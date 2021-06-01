@@ -31,7 +31,7 @@ class AttendanceController extends Controller
 
     public function getAttendances(Request $request){
         // if ($request->ajax()) {
-            $data = $this->coverNoteService->getAll();
+            $data = $this->attendanceRepository->getAll();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function($row){

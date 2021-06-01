@@ -31,7 +31,7 @@ class StudentController extends Controller
 
     public function getStudents(Request $request){
         // if ($request->ajax()) {
-            $data = $this->coverNoteService->getAll();
+            $data = $this->studentRepository->getAll();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function($row){

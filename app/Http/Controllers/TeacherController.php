@@ -31,7 +31,7 @@ class TeacherController extends Controller
 
     public function getTeachers(Request $request){
         // if ($request->ajax()) {
-            $data = $this->coverNoteService->getAll();
+            $data = $this->teacherRepository->getAll();
             return DataTables::of($data)
                 ->addIndexColumn()
                 ->addColumn('name', function($row){

@@ -37,11 +37,12 @@
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
     <link id="color" rel="stylesheet" href="{{ asset('assets/css/color-1.css') }}" media="screen">
+    @stack('styles')
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }}">
 </head>
 
-<body onload="startTime()">
+<body>
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
@@ -95,6 +96,7 @@
     <script src="{{ asset('assets/js/typeahead-search/typeahead-custom.js') }}"></script> --}}
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
+    @stack('scripts')
     <script src="{{ asset('assets/js/script.js') }}"></script>
     {{-- <script src="{{ asset('assets/js/theme-customizer/customizer.js') }}"></script> --}}
     <!-- login js-->
