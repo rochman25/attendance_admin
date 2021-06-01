@@ -22,22 +22,25 @@ class AttendanceRepository {
     }
 
     public function createNewAttendance($data){
+        // dd($data);
+        $days = implode(",",$data['days']);
         return $this->attendance->create([
-            "nis" => $data['nis'],
             "name" => $data['name'],
-            "gender" => $data['gender'],
-            "pob" => $data['pob'],
-            "dob" => $data['dob']
+            "check_in" => $data['check_in'],
+            "check_out" => $data['check_out'],
+            "days" => $days,
+            "status" => $data['status']
         ]);
     }
 
     public function updateAttendance($data, $id){
+        $days = implode(",",$data['days']);
         return $this->getById($id)->update([
-            "nis" => $data['nis'],
             "name" => $data['name'],
-            "gender" => $data['gender'],
-            "pob" => $data['pob'],
-            "dob" => $data['dob']
+            "check_in" => $data['check_in'],
+            "check_out" => $data['check_out'],
+            "days" => $days,
+            "status" => $data['status']
         ]);
     }
 

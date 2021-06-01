@@ -57,7 +57,8 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        return view('pages.attendances.create'  );
+        $days = ["senin","selasa","rabu","kamis","jum'at","sabtu"];
+        return view('pages.attendances.create',compact('days'));
     }
 
     /**
@@ -80,9 +81,10 @@ class AttendanceController extends Controller
             DB::beginTransaction();
             $this->attendanceRepository->createNewAttendance($request->all());
             DB::commit();
-            return redirect()->route('teachers.index')->with('success','Absensi berhasil disimpan');
+            return redirect()->route('attendances.index')->with('success','Absensi berhasil disimpan');
         } catch (\Throwable $th) {
             DB::rollBack();
+            // dd($th->getMessage());
             return redirect()->back()->withInput()->with('error','Absensi gagal disimpan');
         }
     }
