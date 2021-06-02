@@ -16,13 +16,15 @@ trait ApiMessage
     public $unknownMode = "Mode tidak ditemukan.";
     public $saveSuccess = "Data berhasil disimpan";
 
-    public $attendanceSignIn = "Selamat anda sudah presensi masuk hari ini.";
-    public $attendanceSignOut = "Selamat anda sudah presensi keluar hari ini.";
+    public $nis = "test";
 
-    public $attendanceSignInLimit = "Anda sudah presensi masuk hari ini";
-    public $attendanceSignOutLimit = "Anda sudah presensi keluar hari ini";
+    public $attendanceSignIn = "Selamat sudah presensi masuk hari ini.";
+    public $attendanceSignOut = "Selamat sudah presensi keluar hari ini.";
 
-    public $attendanceDone = "Anda sudah presensi hari ini";
+    public $attendanceSignInLimit = "Sudah presensi masuk hari ini";
+    public $attendanceSignOutLimit = "Sudah presensi keluar hari ini";
+
+    public $attendanceDone = "Sudah presensi hari ini";
     public $tokenRefreshed = "Token berhasil di refresh";
 }
 
