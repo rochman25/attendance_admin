@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Traits\ApiFunction;
 use App\Traits\ApiMessage;
 use App\Traits\ApiResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -11,5 +12,5 @@ use Illuminate\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ApiResponse, ApiMessage;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, ApiResponse, ApiMessage, ApiFunction;
 }

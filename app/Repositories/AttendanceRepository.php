@@ -58,4 +58,8 @@ class AttendanceRepository {
         }])->where('id',$id_attendance)->get();
     }
 
+    public function getActiveAttendance(){
+        return $this->attendance->where('status','1')->get();
+    }
+
 }

@@ -45,4 +45,14 @@ class StudentRepository {
         return $this->getById($id)->delete();
     }
 
+    public function getListStudentsByAttendanceId($id){
+        return $this->student->whereHas('attendances', function($query)use($id){
+            $query->where('attendance_id',$id);
+        })->get();
+    }
+
+    public function getStudentsExcept($arr){
+        return $this->student->whereNotIn('id',$arr)->get();
+    }
+
 }

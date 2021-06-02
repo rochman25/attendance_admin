@@ -1,9 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\AttendanceController;
 use App\Http\Controllers\Api\AttendanceStudentController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
-use App\Http\Controllers\AttendanceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,9 +32,13 @@ Route::middleware(['jwt.verify'])->group(function () {
     Route::post('/users/change_password/{id}',[UserController::class,'changePassword'])->name('api.user.change_password');
     
     //attendance student
-    Route::post('/attendances', [AttendanceStudentController::class, 'store'])->name('api.attendance.student');
+    Route::post('/attendances/save', [AttendanceStudentController::class, 'store'])->name('api.attendance.student');
     Route::post('/attendances/multiple_student/save', [AttendanceStudentController::class, 'storeBulk'])->name('api.attendance.student.bulk');
     Route::get('/attendances/{id}',[AttendanceStudentController::class,'getDetailAttendance'])->name('api.attendance.student.detail');
     Route::get('/attendances/report/{id}',[AttendanceStudentController::class,'getStudentReportAttendance'])->name('api.attendance_history.student');
+
+    //attendances
+    Route::get('/attendances', [AttendanceController::class, 'index'])->name('api.attendance.index');
+    Route::get('/attendances/{id}/students', [AttendanceController::class ,'indexStudentsById'])->name('api.attendance.index.student');
 });
 
