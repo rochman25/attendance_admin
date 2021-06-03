@@ -40,6 +40,9 @@ class AttendanceStudentController extends Controller
                 ->addColumn('updated_at', function($row){
                     return Carbon::parse($row->updated_at)->diffForHumans();
                 })
+                ->addColumn('check_in', function($row){
+                    return Carbon::parse($row->created_at)->format("d-M-Y")." ".$row->check_in;
+                })
                 ->rawColumns(['name'])
                 ->make(true);
         // }

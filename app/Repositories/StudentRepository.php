@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Student;
+use Carbon\Carbon;
 
 class StudentRepository {
 
@@ -53,6 +54,12 @@ class StudentRepository {
 
     public function getStudentsExcept($arr){
         return $this->student->whereNotIn('id',$arr)->get();
+    }
+
+    public function getListStuentByTodayAttendanceId(){
+        return $this->student->whereHas('attendances', function($query){
+            $query->whereDate('created_at',Carbon::today());
+        })->get();
     }
 
 }

@@ -26,7 +26,7 @@ class AttendanceController extends Controller
     }
 
     public function indexStudentsById(Request $request, $id){
-        $studentsHasAttend = $this->studentRepository->getListStudentsByAttendanceId($id);
+        $studentsHasAttend = $this->studentRepository->getListStuentByTodayAttendanceId();
         $arrStudentId = [];
         foreach($studentsHasAttend as $index => $item){
             $arrStudentId[] = $item->id;
