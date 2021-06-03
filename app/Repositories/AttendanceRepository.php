@@ -27,7 +27,7 @@ class AttendanceRepository {
         return $this->attendance->create([
             "name" => $data['name'],
             "check_in" => $data['check_in'],
-            "check_out" => $data['check_out'],
+            // "check_out" => $data['check_out'],
             "days" => $days,
             "status" => $data['status']
         ]);
@@ -38,7 +38,7 @@ class AttendanceRepository {
         return $this->getById($id)->update([
             "name" => $data['name'],
             "check_in" => $data['check_in'],
-            "check_out" => $data['check_out'],
+            // "check_out" => $data['check_out'],
             "days" => $days,
             "status" => $data['status']
         ]);

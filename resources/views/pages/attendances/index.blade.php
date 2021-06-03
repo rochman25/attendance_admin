@@ -44,7 +44,7 @@
                                                 <th scope="col">#</th>
                                                 <th scope="col">Presensi</th>
                                                 <th scope="col">Waktu Masuk</th>
-                                                <th scope="col">Waktu Keluar</th>
+                                                {{-- <th scope="col">Waktu Keluar</th> --}}
                                                 <th scope="col">Status</th>
                                                 <th scope="col">Aksi</th>
                                             </tr>
@@ -81,10 +81,10 @@
                         data: 'check_in',
                         name: 'check_in'
                     },
-                    {
-                        data: 'check_out',
-                        name: 'check_out'
-                    },
+                    // {
+                    //     data: 'check_out',
+                    //     name: 'check_out'
+                    // },
                     {
                         data: 'status',
                         name: 'status'

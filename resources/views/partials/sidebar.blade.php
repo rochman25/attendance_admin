@@ -37,9 +37,9 @@
                         <li><a href="{{ route('attendance_students.index') }}">Presensi Siswa</a></li>
                     </ul>
                 </li>
-                <li><a class="sidebar-link" href="#"><i data-feather="printer"></i><span
+                {{-- <li><a class="sidebar-link" href="#"><i data-feather="printer"></i><span
                             class="lan-14">Laporan</span></a>
-                </li>
+                </li> --}}
                 <li class="sidebar-main-title">
                     <div>
                         <h6>Settings</h6>

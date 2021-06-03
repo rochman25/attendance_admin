@@ -81,14 +81,14 @@
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </div>
-                                        <div class="col-md-3 mb-3">
+                                        {{-- <div class="col-md-3 mb-3">
                                             <label for="validationServer05">Waktu Keluar</label>
                                             <input class="form-control @error('check_out') is-invalid @enderror" name="check_out"
                                                 type="time" value="{{ old('check_out') }}" required="">
                                             @error('check_out')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <button class="btn btn-primary" type="submit">Simpan</button>
                                 </form>

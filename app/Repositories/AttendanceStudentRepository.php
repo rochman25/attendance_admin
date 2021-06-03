@@ -14,6 +14,10 @@ class AttendanceStudentRepository {
         $this->attendanceStudent = $attendanceStudent;        
     }
 
+    public function getAll(){
+        return $this->attendanceStudent->all();
+    }
+
     public function getAttendanceStudentByToday($id_student, $id_attendance){
         return $this->attendanceStudent->where('student_id', $id_student)->where('attendance_id', $id_attendance)->whereDate('created_at',Carbon::today())->first();
     }

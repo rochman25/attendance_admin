@@ -50,5 +50,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('attendances/list', [AttendanceController::class, 'getAttendances'])->name('attendances.list');
     Route::resource('attendances', AttendanceController::class);
     //attendance students
+    Route::get('attendace_students/list',[AttendanceStudentController::class,'getStudentAttendances'])->name('attendance_students.list');
     Route::get('attendance_students',[AttendanceStudentController::class,'index'])->name('attendance_students.index');
+
 });

@@ -3,10 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\AttendanceStudent;
+use App\Repositories\AttendanceStudentRepository;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Yajra\DataTables\DataTables;
 
 class AttendanceStudentController extends Controller
 {
+    protected $attendanceStudentRepository;
+
+    public function __construct(AttendanceStudentRepository $attendanceStudentRepository)
+    {
+        $this->attendanceStudentRepository = $attendanceStudentRepository;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,6 +24,25 @@ class AttendanceStudentController extends Controller
     public function index()
     {
         return view('pages.attendance_students.index');
+    }
+
+    public function getStudentAttendances(Request $request){
+        // if ($request->ajax()) {
+            $data = $this->attendanceStudentRepository->getAll();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('name', function($row){
+                    return '<a href="'. route('students.edit',$row->student->id).'">'.$row->student->nis.'</a>';
+                })
+                ->addColumn('attendance', function($row){
+                    return $row->attendance->name;
+                })
+                ->addColumn('updated_at', function($row){
+                    return Carbon::parse($row->updated_at)->diffForHumans();
+                })
+                ->rawColumns(['name'])
+                ->make(true);
+        // }
     }
 
     /**

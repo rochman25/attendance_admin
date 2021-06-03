@@ -196,7 +196,7 @@ class AttendanceStudentController extends Controller
         return $this->responseSukses($data, 200);
     }
 
-    public function getEmployeeReportAttendance(Request $request, $id)
+    public function getStudentReportAttendance(Request $request, $id)
     {
         $attendanceEmployee = $this->attendanceRepository->getReportAttendanceWithStudentById($id, $request->id_student);
         $dataReport = ["data" => $this->handleNullMultiDimensi($attendanceEmployee)];

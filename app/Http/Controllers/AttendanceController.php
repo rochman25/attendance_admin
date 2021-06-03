@@ -72,7 +72,7 @@ class AttendanceController extends Controller
         $request->validate([
             "name" => "required|unique:attendances,name",
             "check_in" => "required",
-            "check_out" => "required",
+            // "check_out" => "required",
             "days" => "required",
             "status" => "required",
         ]);
@@ -125,7 +125,7 @@ class AttendanceController extends Controller
         $request->validate([
             "name" => "required|unique:attendances,name,".$id,
             "check_in" => "required",
-            "check_out" => "required",
+            // "check_out" => "required",
             "days" => "required",
             "status" => "required"
         ]);

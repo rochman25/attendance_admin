@@ -188,6 +188,10 @@ return [
     | the aliases are "lazy" loaded so they don't hinder performance.
     |
     */
+    
+    'timezone' => 'Asia/Jakarta',
+    'locale' => 'id',
+    'faker_locale' => 'id_ID',
 
     'aliases' => [
 
