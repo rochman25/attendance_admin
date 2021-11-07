@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "3f752312-fc3d-45b3-a423-16b2523b2576",
+		"name": "Absensi Siswa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "username",
+									"value": "admin",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "admin",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url_local}}/api/login",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYyMjI0MjQ2MiwiZXhwIjoxNjIyMjQ2MDYyLCJuYmYiOjE2MjIyNDI0NjIsImp0aSI6InA3MkZnN0dtZEtCWWRTOGIiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.lwaS1axirHwW3IlvNX6L4IpHx33eNkf9X5qLBd9zl8o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_local}}/api/refresh_token",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"api",
+								"refresh_token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "attendance",
+			"item": [
+				{
+					"name": "post attendance student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWZyZXNoX3Rva2VuIiwiaWF0IjoxNjIyMjQyNDYyLCJleHAiOjE2MjIyNDYxMDIsIm5iZiI6MTYyMjI0MjUwMiwianRpIjoiaDc0TnNnd2hOUWJtTGwzMyIsInN1YiI6MSwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.0JFvcEUGxpUIs0V1bBL4asOcdqiHjHchkFIT54sV2Zw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_local}}/api/attendances",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"api",
+								"attendances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "post multiple student attendance student",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9yZWZyZXNoX3Rva2VuIiwiaWF0IjoxNjIyNTg0Mjg0LCJleHAiOjE2MjI1OTM3MDAsIm5iZiI6MTYyMjU5MDEwMCwianRpIjoicWRXd2VnUldBaVo1YU5WWSIsInN1YiI6NCwicHJ2IjoiMjNiZDVjODk0OWY2MDBhZGIzOWU3MDFjNDAwODcyZGI3YTU5NzZmNyJ9.wdaen8L12CVg3sGZG0SllH2Y_N63Q8jNjUMO5DcOYbg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "attendance_id",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "student_id",
+									"value": "1,2,3,4,5",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "check_in",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{base_url_local}}/api/attendances/multiple_student/save",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"api",
+								"attendances",
+								"multiple_student",
+								"save"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list attendances",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC8xMjcuMC4wLjE6ODAwMFwvYXBpXC9sb2dpbiIsImlhdCI6MTYyMjY2Nzk1MCwiZXhwIjoxNjIyNjcxNTUwLCJuYmYiOjE2MjI2Njc5NTAsImp0aSI6IlVwbTRaaUdDbW1icWN6WXciLCJzdWIiOjQsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.FzWJLHHhY2r-R3EDQkXhgIFh9GAoYjl9-g_aRh8dBbI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_local}}/api/attendances",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"api",
+								"attendances"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get list available students",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_local}}/api/attendances/1/students",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"api",
+								"attendances",
+								"1",
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "get detail profile user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url_local}}/users/1",
+							"host": [
+								"{{base_url_local}}"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_local}}/api/test",
+					"host": [
+						"{{base_url_local}}"
+					],
+					"path": [
+						"api",
+						"test"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

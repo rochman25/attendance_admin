@@ -3,6 +3,7 @@
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\AttendanceStudentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
@@ -27,9 +28,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/logout',[AuthController::class,'logout'])->name('auth.logout');
 
-    Route::get('/', function () {
-        return view('pages.dashboard');
-    })->name('home.view');
+    Route::get('/',[HomeController::class,'index'])->name('home.view');
 
     Route::get('/home',function(){
         return view('pages.dashboard');
