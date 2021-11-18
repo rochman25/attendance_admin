@@ -6,6 +6,7 @@ use App\Models\AttendanceStudent;
 use App\Repositories\AttendanceStudentRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
 
 class AttendanceStudentController extends Controller
@@ -43,7 +44,10 @@ class AttendanceStudentController extends Controller
                 ->addColumn('check_in', function($row){
                     return Carbon::parse($row->created_at)->format("d-M-Y")." ".$row->check_in;
                 })
-                ->rawColumns(['name'])
+                ->addColumn('action', function($row){
+                    return '<a href="javascript:void(0)" class="delete btn btn-danger btn-sm" data-url="'.route('attendance_students.destroy',$row->id).'">Delete</a>';
+                })
+                ->rawColumns(['name','action'])
                 ->make(true);
         // }
     }
@@ -109,8 +113,17 @@ class AttendanceStudentController extends Controller
      * @param  \App\Models\AttendanceStudent  $attendanceStudent
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AttendanceStudent $attendanceStudent)
+    public function destroy($id)
     {
-        //
+        try{
+            DB::beginTransaction();
+            $this->attendanceStudentRepository->delete($id);
+            DB::commit();
+            return response()->json(['status' => 'success','message' => "Data berhasil dihapus"]);
+        }catch(\Throwable $e){
+            DB::rollBack();
+            // dd($e);
+            return response()->json(['status' => 'error','message' => $e->getMessage()]);
+        }
     }
 }

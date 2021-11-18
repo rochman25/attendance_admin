@@ -46,6 +46,7 @@
                                                 <th scope="col">Waktu Masuk</th>
                                                 {{-- <th scope="col">Waktu Keluar</th> --}}
                                                 <th scope="col">Status</th>
+                                                <th scope="col">Aksi</th>
                                             </tr>
                                         </thead>
                                     </table>
@@ -91,6 +92,10 @@
                     {
                         data: 'status',
                         name: 'status'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action'
                     },
                 ]
             });

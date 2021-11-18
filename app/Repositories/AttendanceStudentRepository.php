@@ -46,7 +46,11 @@ class AttendanceStudentRepository {
     }
 
     public function getById($id){
+        return $this->attendanceStudent->find($id);
+    }
 
+    public function delete($id){
+        return $this->getById($id)->delete();
     }
 
 }
