@@ -36,6 +36,7 @@
                                 @endcomponent
                             </div>
                             <div class="col-sm-12 col-lg-12 col-xl-12">
+                                <a href="{{ route('attendance_students.export') }}" target="_blank" class="btn btn-sm btn-primary mb-3"> Export</a>
                                 <div class="table-responsive">
                                     <table class="display datatables" id="data-table-buttons">
                                         <thead>

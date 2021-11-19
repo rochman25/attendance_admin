@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\AttendanceStudentExport;
 use App\Models\AttendanceStudent;
 use App\Repositories\AttendanceStudentRepository;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\DataTables;
-
+use Maatwebsite\Excel\Facades\Excel;
 class AttendanceStudentController extends Controller
 {
     protected $attendanceStudentRepository;
@@ -125,5 +126,10 @@ class AttendanceStudentController extends Controller
             // dd($e);
             return response()->json(['status' => 'error','message' => $e->getMessage()]);
         }
+    }
+
+    public function export() 
+    {
+        return Excel::download(new AttendanceStudentExport, 'presensi.xlsx');
     }
 }

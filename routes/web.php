@@ -52,5 +52,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('attendace_students/list',[AttendanceStudentController::class,'getStudentAttendances'])->name('attendance_students.list');
     Route::get('attendance_students',[AttendanceStudentController::class,'index'])->name('attendance_students.index');
     Route::delete('attendance_students/{id}',[AttendanceStudentController::class,'destroy'])->name('attendance_students.destroy');
+    Route::get('attendance_students/export/', [AttendanceStudentController::class,'export'])->name('attendance_students.export');
 
 });
