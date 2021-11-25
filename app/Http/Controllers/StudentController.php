@@ -69,8 +69,8 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nis" => "required|unique:students,nis",
-            "name" => "required",
+            "nis" => "required|unique:students,nis|max:10",
+            "name" => "required|max:255",
             "gender" => "required"
         ]);
 
@@ -118,8 +118,8 @@ class StudentController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            "nis" => "required|unique:students,nis,".$id,
-            "name" => "required",
+            "nis" => "required|max:10|unique:students,nis,".$id,
+            "name" => "required|max:255",
             "gender" => "required"
         ]);
 

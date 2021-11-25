@@ -38,7 +38,7 @@
                                     <div class="row">
                                         <div class="col-md-6 mb-3">
                                             <label for="validationServer01">NIS</label>
-                                            <input class="form-control @error('nis') is-invalid @enderror" name="nis" type="text"
+                                            <input class="form-control @error('nis') is-invalid @enderror" maxlength="10" onkeypress='validate(event)' name="nis" type="text"
                                                 value="{{ old('nis',$student->nis) }}" required="">
                                             @error('nis')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="col-md-6 mb-3">
                                             <label for="validationServer01">Nama Lengkap</label>
-                                            <input class="form-control @error('name') is-invalid @enderror" name="name" type="text"
+                                            <input class="form-control @error('name') is-invalid @enderror" onkeypress="return /^[a-zA-Z\s]*$/i.test(event.key)" name="name" type="text"
                                                 value="{{ old('name',$student->name) }}" required="">
                                             @error('name')
                                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -78,7 +78,7 @@
                                         <div class="col-md-3 mb-3">
                                             <label for="validationServer05">Tanggal Lahir</label>
                                             <input class="form-control @error('dob') is-invalid @enderror" name="dob" type="date"
-                                                value="{{ old('dob',$student->dob) }}" required="">
+                                                value="{{ old('dob',$student->dob) }}" max="{{ date("Y-m-d") }}" required="">
                                             @error('dob')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
@@ -94,3 +94,24 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        function validate(evt) {
+            var theEvent = evt || window.event;
+
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+    </script>
+@endpush

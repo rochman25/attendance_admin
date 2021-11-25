@@ -72,10 +72,10 @@ class TeacherController extends Controller
     public function store(Request $request, UserRepository $userRepository, UserTeacherRepository $userTeacherRepository)
     {
         $request->validate([
-            "nip" => "required|unique:teachers,nip",
-            "name" => "required",
+            "nip" => "required|unique:teachers,nip|max:18",
+            "name" => "required|max:255",
             "gender" => "required",
-            "username" => "required|unique:users,username",
+            "username" => "required|unique:users,username|max:25",
             "password" => "required|min:4|confirmed",
             "email" => "required|email|unique:users,email"
         ]);
@@ -138,10 +138,10 @@ class TeacherController extends Controller
     {
         $id_user = $request->input('id_user');
         $request->validate([
-            "nip" => "required|unique:teachers,nip,".$id,
-            "name" => "required",
+            "nip" => "required|max:18|unique:teachers,nip,".$id,
+            "name" => "required|max:255",
             "gender" => "required",
-            "username" => "required|unique:users,username,".$id_user,
+            "username" => "required|max:25|unique:users,username,".$id_user,
             "password" => "nullable|min:4|confirmed",
             "email" => "nullable|email|unique:users,email,".$id_user
         ]);
